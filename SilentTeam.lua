@@ -496,7 +496,7 @@ end
 -- CAMUFLAR NICK (FUNCIONA)
 -- ============================================
 do
-    local NOME_FAKE = "VSILENT_TEAM"
+    local NOME_FAKE = "SILENT_TEAM"
     local CAMINHOS_NOME = {
         {"InventoryUI", "InvFrame", "InvPessoal", "BTxt"},
     }
@@ -2475,7 +2475,7 @@ local subLbl = Instance.new("TextLabel")
 subLbl.Size = UDim2.new(0, 300, 0, 14)
 subLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 34 or 32)
 subLbl.BackgroundTransparency = 1
-subLbl.Text = "@VETERANO.DEV"
+subLbl.Text = "@SILENT_TEAM"
 subLbl.TextColor3 = TC
 subLbl.Font = Enum.Font.GothamMedium
 subLbl.TextSize = 10
