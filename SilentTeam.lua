@@ -496,7 +496,7 @@ end
 -- CAMUFLAR NICK (FUNCIONA)
 -- ============================================
 do
-    local NOME_FAKE = "VETERANO.DEV"
+    local NOME_FAKE = "VSILENT_TEAM"
     local CAMINHOS_NOME = {
         {"InventoryUI", "InvFrame", "InvPessoal", "BTxt"},
     }
@@ -2454,7 +2454,7 @@ local badgeCorner = Instance.new("UICorner"); badgeCorner.CornerRadius = UDim.ne
 local badgeTxt = Instance.new("TextLabel")
 badgeTxt.Size = UDim2.new(1, 0, 1, 0)
 badgeTxt.BackgroundTransparency = 1
-badgeTxt.Text = "VT"
+badgeTxt.Text = "ST"
 badgeTxt.TextColor3 = BG
 badgeTxt.Font = Enum.Font.GothamBlack
 badgeTxt.TextSize = isMobile and 15 or 13
@@ -2464,7 +2464,7 @@ local titleLbl = Instance.new("TextLabel")
 titleLbl.Size = UDim2.new(0, 300, 0, 28)
 titleLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 8 or 6)
 titleLbl.BackgroundTransparency = 1
-titleLbl.Text = "VETERANO TEAM | SINTONIA RP V2"
+titleLbl.Text = "SILENT TEAM | SINTONIA RP V2"
 titleLbl.TextColor3 = WH
 titleLbl.Font = Enum.Font.GothamBlack
 titleLbl.TextSize = isMobile and 12 or 14
