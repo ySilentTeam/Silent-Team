@@ -12,10 +12,10 @@ local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEna
 
 local TC = Color3.fromRGB(170,70,255)
 local TCD = Color3.fromRGB(90,40,140)
-local BG = Color3.fromRGB(14,8,24)
-local BG2 = Color3.fromRGB(22,14,34)
+local BG = Color3.fromRGB(10, 10, 10)
+local BG2 = Color3.fromRGB(22, 22, 22)
 local BG3 = Color3.fromRGB(32,20,50)
-local LINE = Color3.fromRGB(70,45,110)
+local LINE = Color3.fromRGB(220, 220, 220)
 local DIM = Color3.fromRGB(170,140,210)
 local WH = Color3.fromRGB(240,230,255)
 local YEL = Color3.fromRGB(255,200,50)
