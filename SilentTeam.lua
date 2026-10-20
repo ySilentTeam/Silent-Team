@@ -2159,7 +2159,7 @@ do
     frame.AnchorPoint = Vector2.new(1, 0)
     frame.Position = UDim2.new(1, -20, 0, 100)
     frame.Size = UDim2.fromOffset(280, 320)
-    frame.BackgroundColor3 = BG2
+    frame.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
     frame.BorderSizePixel = 0
     frame.Active = true
     frame.Visible = false
