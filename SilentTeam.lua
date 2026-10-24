@@ -12,8 +12,8 @@ local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEna
 
 local TC = Color3.fromRGB(170,70,255)
 local TCD = Color3.fromRGB(90,40,140)
-local BG = Color3.fromRGB(14,8,24) 
-local BG2 = Color3.fromRGB(22,14,34
+local BG = Color3.fromRGB(14,8,24)
+local BG2 = Color3.fromRGB(22,14,34)
 local BG3 = Color3.fromRGB(32,20,50)
 local LINE = Color3.fromRGB(70,45,110)
 local DIM = Color3.fromRGB(170,140,210)
@@ -496,7 +496,7 @@ end
 -- CAMUFLAR NICK (FUNCIONA)
 -- ============================================
 do
-    local NOME_FAKE = "SILENT_TEAM"
+    local NOME_FAKE = "VETERANO.DEV"
     local CAMINHOS_NOME = {
         {"InventoryUI", "InvFrame", "InvPessoal", "BTxt"},
     }
@@ -2159,7 +2159,7 @@ do
     frame.AnchorPoint = Vector2.new(1, 0)
     frame.Position = UDim2.new(1, -20, 0, 100)
     frame.Size = UDim2.fromOffset(280, 320)
-    frame.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
+    frame.BackgroundColor3 = BG2
     frame.BorderSizePixel = 0
     frame.Active = true
     frame.Visible = false
@@ -2454,7 +2454,7 @@ local badgeCorner = Instance.new("UICorner"); badgeCorner.CornerRadius = UDim.ne
 local badgeTxt = Instance.new("TextLabel")
 badgeTxt.Size = UDim2.new(1, 0, 1, 0)
 badgeTxt.BackgroundTransparency = 1
-badgeTxt.Text = "ST"
+badgeTxt.Text = "VT"
 badgeTxt.TextColor3 = BG
 badgeTxt.Font = Enum.Font.GothamBlack
 badgeTxt.TextSize = isMobile and 15 or 13
@@ -2464,7 +2464,7 @@ local titleLbl = Instance.new("TextLabel")
 titleLbl.Size = UDim2.new(0, 300, 0, 28)
 titleLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 8 or 6)
 titleLbl.BackgroundTransparency = 1
-titleLbl.Text = "SILENT TEAM | SINTONIA RP V2"
+titleLbl.Text = "VETERANO TEAM | SINTONIA RP V2"
 titleLbl.TextColor3 = WH
 titleLbl.Font = Enum.Font.GothamBlack
 titleLbl.TextSize = isMobile and 12 or 14
@@ -2475,7 +2475,7 @@ local subLbl = Instance.new("TextLabel")
 subLbl.Size = UDim2.new(0, 300, 0, 14)
 subLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 34 or 32)
 subLbl.BackgroundTransparency = 1
-subLbl.Text = "@Silent.Team"
+subLbl.Text = "@VETERANO.DEV"
 subLbl.TextColor3 = TC
 subLbl.Font = Enum.Font.GothamMedium
 subLbl.TextSize = 10
