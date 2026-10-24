@@ -2458,7 +2458,7 @@ logo.Name = "SilentTeamLogo"
 logo.Size = UDim2.new(1, 0, 1, 0)
 logo.Position = UDim2.new(0, 0, 0, 0)
 logo.BackgroundTransparency = 1
-logo.Image = "rbxassetid://COLOQUE_O_ID_DA_IMAGEM"
+logo.Image = "rbxassetid://117245661451697"
 logo.ScaleType = Enum.ScaleType.Crop
 logo.Parent = badge
 
