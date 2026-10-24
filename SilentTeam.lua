@@ -2451,14 +2451,25 @@ badge.BackgroundColor3 = TC
 badge.BorderSizePixel = 0
 badge.Parent = topBar
 local badgeCorner = Instance.new("UICorner"); badgeCorner.CornerRadius = UDim.new(0,8); badgeCorner.Parent = badge
-local badgeTxt = Instance.new("TextLabel")
-badgeTxt.Size = UDim2.new(1, 0, 1, 0)
-badgeTxt.BackgroundTransparency = 1
-badgeTxt.Text = "SLT"
-badgeTxt.TextColor3 = BG
-badgeTxt.Font = Enum.Font.GothamBlack
-badgeTxt.TextSize = isMobile and 15 or 13
-badgeTxt.Parent = badge
+
+-- LOGO SILENT TEAM
+local logo = Instance.new("ImageLabel")
+logo.Name = "SilentTeamLogo"
+logo.Size = UDim2.new(1, 0, 1, 0)
+logo.Position = UDim2.new(0, 0, 0, 0)
+logo.BackgroundTransparency = 1
+logo.Image = "rbxassetid://COLOQUE_O_ID_DA_IMAGEM"
+logo.ScaleType = Enum.ScaleType.Crop
+logo.Parent = badge
+
+local logoCorner = Instance.new("UICorner")
+logoCorner.CornerRadius = UDim.new(0, 8)
+logoCorner.Parent = logo
+
+local logoStroke = Instance.new("UIStroke")
+logoStroke.Color = Color3.fromRGB(255, 255, 255)
+logoStroke.Thickness = 1.5
+logoStroke.Parent = badge
 
 local titleLbl = Instance.new("TextLabel")
 titleLbl.Size = UDim2.new(0, 300, 0, 28)
