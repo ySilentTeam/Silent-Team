@@ -13,7 +13,9 @@ def db():
 
 @app.route("/")
 def home():
-    return jsonify(ok=True, service="SilentTeam Key API", status="online")("/validate", methods=["GET"])
+    return jsonify(ok=True, service="SilentTeam Key API", status="online")
+
+@app.route("/validate", methods=["GET"])
 def validate():
     secret = request.args.get("secret", "")
     key = request.args.get("key", "").strip()
