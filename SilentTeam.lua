@@ -3062,56 +3062,7 @@ local updateContent = function()
             ap.PaddingLeft = UDim.new(0,8); ap.PaddingRight = UDim.new(0,8)
             ap.Parent = aviso
 
-            criarSep("TRACER")
-            criarToggle("Tracer Neon", function() return false end, function(v) T.armaTracer = false end)
-            local coresTracer = {
-                {"Ciano", Color3.fromRGB(0,255,255)},
-                {"Verde", Color3.fromRGB(60,255,90)},
-                {"Rosa", Color3.fromRGB(255,60,190)},
-                {"Roxo", Color3.fromRGB(160,70,255)},
-                {"Vermelho", Color3.fromRGB(255,45,45)},
-                {"Azul", Color3.fromRGB(70,130,255)},
-                {"Laranja", Color3.fromRGB(255,145,30)},
-                {"Branco", Color3.fromRGB(240,240,240)},
-                {"Amarelo", Color3.fromRGB(255,230,60)},
-                {"Arco-iris", nil},
-            }
-            local corGrid = Instance.new("Frame")
-            corGrid.Size = UDim2.new(1, 0, 0, isMobile and 130 or 120)
-            corGrid.BackgroundColor3 = BG3
-            corGrid.BorderSizePixel = 0
-            corGrid.Parent = leftPanel
-            local cgC = Instance.new("UICorner"); cgC.CornerRadius = UDim.new(0,10); cgC.Parent = corGrid
-            local cgS = Instance.new("UIStroke"); cgS.Color = LINE; cgS.Thickness = 1; cgS.Parent = corGrid
-            local cgGrid = Instance.new("UIGridLayout")
-            cgGrid.CellSize = UDim2.new(0, isMobile and 50 or 55, 0, isMobile and 26 or 24)
-            cgGrid.CellPadding = UDim2.new(0, 4, 0, 4)
-            cgGrid.SortOrder = Enum.SortOrder.LayoutOrder
-            cgGrid.Parent = corGrid
-            local cgPad = Instance.new("UIPadding")
-            cgPad.PaddingTop = UDim.new(0,6)
-            cgPad.PaddingLeft = UDim.new(0,6)
-            cgPad.PaddingRight = UDim.new(0,6)
-            cgPad.Parent = corGrid
-            for _, corData in ipairs(coresTracer) do
-                local nome = corData[1]
-                local corRGB = corData[2]
-                local btn = Instance.new("TextButton")
-                btn.BackgroundColor3 = corRGB or Color3.fromRGB(200,200,200)
-                btn.Text = nome
-                btn.TextColor3 = (corRGB and (corRGB.R+corRGB.G+corRGB.B > 400) and Color3.fromRGB(0,0,0)) or Color3.fromRGB(255,255,255)
-                btn.Font = Enum.Font.GothamBold
-                btn.TextSize = isMobile and 8 or 9
-                btn.BorderSizePixel = 0
-                btn.Parent = corGrid
-                local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0,6); bc.Parent = btn
-                local bs = Instance.new("UIStroke"); bs.Color = LINE; bs.Thickness = 1; bs.Parent = btn
-                local function aplicar()
-                    T.armaTracer = false
-                end
-                btn.MouseButton1Click:Connect(aplicar)
-                btn.TouchTap:Connect(aplicar)
-            end
+            
 
            
 
