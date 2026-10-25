@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 DB = "keys.db"
-SECRET = "TROQUE_POR_UMA_SENHA_ALEATORIA_LONGA"
+SECRET = "Silent_TEAM"
 
 def db():
     conn = sqlite3.connect(DB)
