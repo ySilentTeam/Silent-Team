@@ -2463,6 +2463,12 @@ logo.ImageTransparency = 0
 logo.ScaleType = Enum.ScaleType.Fit
 logo.Visible = true
 logo.Parent = badge
+        
+task.delay(5, function()
+    print("Imagem carregada:", logo.IsLoaded)
+    print("Tamanho do badge:", badge.AbsoluteSize)
+    print("Imagem:", logo.Image)
+end)
 
 local logoCorner = Instance.new("UICorner")
 logoCorner.CornerRadius = UDim.new(0, 8)
