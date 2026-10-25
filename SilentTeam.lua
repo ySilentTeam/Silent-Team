@@ -10,16 +10,18 @@ local LocalPlayer = Players.LocalPlayer
 
 local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 
-local TC = Color3.fromRGB(170,70,255)
-local TCD = Color3.fromRGB(90,40,140)
-local BG = Color3.fromRGB(14,8,24)
-local BG2 = Color3.fromRGB(22,14,34)
-local BG3 = Color3.fromRGB(32,20,50)
-local LINE = Color3.fromRGB(70,45,110)
-local DIM = Color3.fromRGB(170,140,210)
-local WH = Color3.fromRGB(240,230,255)
-local YEL = Color3.fromRGB(255,200,50)
-local STAFF_RED = Color3.fromRGB(255,20,40)
+
+-- SILENT TEAM | BLACK & WHITE NEON
+local TC = Color3.fromRGB(255, 255, 255)
+local TCD = Color3.fromRGB(175, 175, 175)
+local BG = Color3.fromRGB(7, 7, 7)
+local BG2 = Color3.fromRGB(15, 15, 15)
+local BG3 = Color3.fromRGB(24, 24, 24)
+local LINE = Color3.fromRGB(75, 75, 75)
+local DIM = Color3.fromRGB(165, 165, 165)
+local WH = Color3.fromRGB(255, 255, 255)
+local YEL = Color3.fromRGB(255, 255, 255)
+local STAFF_RED = Color3.fromRGB(255, 255, 255)
 
 local C = (getgenv and getgenv()) or _G
 cloneref = cloneref or function(v) return v end
