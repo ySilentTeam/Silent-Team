@@ -3043,24 +3043,7 @@ local updateContent = function()
             criarToggle("Staff Check", function() return T.adminCheck end, function(v) T.adminCheck = v end)
             rTextLbl.Text = "AIMBOT - Mira Automatica\n\nModo Legit:\n  So mira quando voce tem arma equipada.\n  Puxa a mira suavemente.\n\nModo Rage:\n  Mira SEMPRE, mesmo sem arma na mao.\n  Trava instantaneamente.\n\nFOV:\n  Distancia maxima do centro da tela.\n\nSuavidade:\n  Menor = trava rapido.\n  Maior = movimento natural.\n\nParte do Corpo:\n  Cabeca = headshot\n  Torso = body shot\n\nWall Check:\n  So mira em quem tem linha de visao.\n\nFriend/Staff Check:\n  Ignora amigos/staff."
 
-        elseif activeTab == "WEAPONS" then
-            rTitle.Text = "WEAPONS"
-            criarSep("BLOQUEADO")
-            local aviso = Instance.new("TextLabel")
-            aviso.Size = UDim2.new(1, 0, 0, isMobile and 60 or 50)
-            aviso.BackgroundColor3 = BG3
-            aviso.Text = "Todas as funcoes desta aba estao\nDESATIVADAS nesta versao."
-            aviso.TextColor3 = DIM
-            aviso.Font = Enum.Font.Gotham
-            aviso.TextSize = isMobile and 10 or 11
-            aviso.TextWrapped = true
-            aviso.TextYAlignment = Enum.TextYAlignment.Center
-            aviso.Parent = leftPanel
-            local ac = Instance.new("UICorner"); ac.CornerRadius = UDim.new(0,8); ac.Parent = aviso
-            local ap = Instance.new("UIPadding")
-            ap.PaddingTop = UDim.new(0,6); ap.PaddingBottom = UDim.new(0,6)
-            ap.PaddingLeft = UDim.new(0,8); ap.PaddingRight = UDim.new(0,8)
-            ap.Parent = aviso
+       
 
             
 
