@@ -11,7 +11,9 @@ def db():
     conn.row_factory = sqlite3.Row
     return conn
 
-@app.route("/validate", methods=["GET"])
+@app.route("/")
+def home():
+    return jsonify(ok=True, service="SilentTeam Key API", status="online")("/validate", methods=["GET"])
 def validate():
     secret = request.args.get("secret", "")
     key = request.args.get("key", "").strip()
