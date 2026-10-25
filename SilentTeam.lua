@@ -2459,7 +2459,9 @@ logo.Size = UDim2.new(1, 0, 1, 0)
 logo.Position = UDim2.new(0, 0, 0, 0)
 logo.BackgroundTransparency = 1
 logo.Image = "rbxassetid://117245661451697"
-logo.ScaleType = Enum.ScaleType.Crop
+logo.ImageTransparency = 0
+logo.ScaleType = Enum.ScaleType.Fit
+logo.Visible = true
 logo.Parent = badge
 
 local logoCorner = Instance.new("UICorner")
