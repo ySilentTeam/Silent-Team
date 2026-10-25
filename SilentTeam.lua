@@ -2314,47 +2314,7 @@ do
         tp.Parent = row
         local tc = Instance.new("UICorner"); tc.CornerRadius = UDim.new(0, 5); tc.Parent = tp
 
-        row:SetAttribute("ItemIdx", idx)
-        tp.MouseButton1Click:Connect(function()
-            -- BLOQUEADO (aba WEAPONS)
-        end)
-        tp.TouchTap:Connect(function()
-            -- BLOQUEADO (aba WEAPONS)
-        end)
-    end
-
-    local function refresh()
-        local drops = o.listDrops and o.listDrops() or {}
-        local maxShow = math.min(#drops, 20)
-        for _, ch in ipairs(list:GetChildren()) do
-            if ch:IsA("GuiObject") and ch.Name ~= "EmptyMsg" then
-                ch:Destroy()
-            end
-        end
-        if maxShow == 0 then
-            emptyMsg.Visible = true
-            countLbl.Text = "0"
-            return
-        end
-        emptyMsg.Visible = false
-        for i = 1, maxShow do
-            buildRow(i, drops[i])
-        end
-        countLbl.Text = tostring(#drops)
-    end
-
-    function o.setColetaHudVisible(v)
-        -- BLOQUEADO (aba WEAPONS)
-        frame.Visible = false
-    end
-
-    task.spawn(function()
-        while not o.destroyed do
-            if frame.Visible then pcall(refresh) end
-            task.wait(0.6)
-        end
-    end)
-end
+        
 
 -- ============================================
 -- STAFF MONITOR
