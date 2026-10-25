@@ -1764,15 +1764,7 @@ do
     o.pararFarmPartes = KF
 end
 
--- ============================================
--- WEAPONS (TUDO BLOQUEADO)
--- ============================================
-do
-    o.restaurarArmas = function() return end
-    handleReady(RunService.RenderStepped:Connect(function()
-        -- bloqueado: nao faz nada
-    end))
-end
+
 
 -- ============================================
 -- GACHA 2% (BLOQUEADO)
@@ -2481,7 +2473,7 @@ end
 local closeBtn = mkTopBtn(isMobile and -52 or -42, Color3.fromRGB(130,25,10), "X")
 local minBtn = mkTopBtn(isMobile and -102 or -82, BG2, "-")
 
-local TAB_NAMES = {"PLAYER","ESP","AIMBOT","WEAPONS","MISC","VEICULO","GARAGEM","CONFIG"}
+local TAB_NAMES = {"PLAYER","ESP","AIMBOT","MISC","VEICULO","GARAGEM","CONFIG"}
 local activeTab = "PLAYER"
 local tabButtons, tabStrokes = {}, {}
 
