@@ -3113,12 +3113,7 @@ local updateContent = function()
                 btn.TouchTap:Connect(aplicar)
             end
 
-            criarSep("COLETAR ITENS")
-            criarToggle("Ativar Coleta Auto", function() return false end, function(v) T.autoColetaEnabled = false end)
-            criarSlider("Velocidade TP", 20, 160, function() return T.itemTeleportSpeed end, function(v) T.itemTeleportSpeed = v end, 5)
-            criarSlider("Cooldown (ms)", 10, 200, function() return math.floor(T.autoColetaCooldown * 100) end, function(v) T.autoColetaCooldown = v / 100 end, 5)
-            criarToggle("Mostrar HUD de itens", function() return false end, function(v) T.coletaHudEnabled = false end)
-            rTextLbl.Text = "WEAPONS - Armas\n\nTodas as funcoes desta aba\nestao DESATIVADAS nesta versao."
+           
 
         elseif activeTab == "MISC" then
             rTitle.Text = "MISC"
