@@ -2481,8 +2481,10 @@ logoStroke.Color = Color3.fromRGB(255, 255, 255)
 logoStroke.Thickness = 1.5
 logoStroke.Parent = badge
 
+
 local titleLbl = Instance.new("TextLabel")
-titleLbl.Size = UDim2.new(0, 300, 0, 28)
+titleLbl.Name = "PanelTitle"
+titleLbl.Size = UDim2.new(0, 220, 0, 28)
 titleLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 8 or 6)
 titleLbl.BackgroundTransparency = 1
 titleLbl.Text = "SILENT TEAM | PAINEL"
@@ -2491,6 +2493,90 @@ titleLbl.Font = Enum.Font.GothamBlack
 titleLbl.TextSize = isMobile and 12 or 14
 titleLbl.TextXAlignment = Enum.TextXAlignment.Left
 titleLbl.Parent = topBar
+
+-- Cartão do jogador no cabeçalho
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local sessionStart = os.clock()
+
+local profile = Instance.new("Frame")
+profile.Name = "PlayerProfile"
+profile.Size = UDim2.new(0, 180, 0, 38)
+profile.Position = UDim2.new(1, -190, 0, 3)
+profile.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+profile.BorderSizePixel = 0
+profile.Parent = topBar
+
+local profileCorner = Instance.new("UICorner")
+profileCorner.CornerRadius = UDim.new(0, 9)
+profileCorner.Parent = profile
+
+local avatar = Instance.new("ImageLabel")
+avatar.Name = "Avatar"
+avatar.Size = UDim2.new(0, 30, 0, 30)
+avatar.Position = UDim2.new(0, 5, 0.5, -15)
+avatar.BackgroundTransparency = 1
+avatar.Image = ""
+avatar.Parent = profile
+
+local avatarCorner = Instance.new("UICorner")
+avatarCorner.CornerRadius = UDim.new(1, 0)
+avatarCorner.Parent = avatar
+
+task.spawn(function()
+    local success, image = pcall(function()
+        return Players:GetUserThumbnailAsync(
+            player.UserId,
+            Enum.ThumbnailType.HeadShot,
+            Enum.ThumbnailSize.Size100x100
+        )
+    end)
+
+    if success and avatar.Parent then
+        avatar.Image = image
+    end
+end)
+
+local playerName = Instance.new("TextLabel")
+playerName.Name = "PlayerName"
+playerName.Size = UDim2.new(1, -45, 0, 17)
+playerName.Position = UDim2.new(0, 42, 0, 3)
+playerName.BackgroundTransparency = 1
+playerName.Text = player.DisplayName
+playerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+playerName.Font = Enum.Font.GothamBold
+playerName.TextSize = 12
+playerName.TextTruncate = Enum.TextTruncate.AtEnd
+playerName.TextXAlignment = Enum.TextXAlignment.Left
+playerName.Parent = profile
+
+local playTime = Instance.new("TextLabel")
+playTime.Name = "PlayTime"
+playTime.Size = UDim2.new(1, -45, 0, 14)
+playTime.Position = UDim2.new(0, 42, 0, 20)
+playTime.BackgroundTransparency = 1
+playTime.Text = "Sessão: 00:00:00"
+playTime.TextColor3 = Color3.fromRGB(180, 180, 180)
+playTime.Font = Enum.Font.Gotham
+playTime.TextSize = 10
+playTime.TextXAlignment = Enum.TextXAlignment.Left
+playTime.Parent = profile
+
+task.spawn(function()
+    while profile.Parent do
+        local elapsed = math.floor(os.clock() - sessionStart)
+        local h = math.floor(elapsed / 3600)
+        local m = math.floor((elapsed % 3600) / 60)
+        local s = elapsed % 60
+
+        playTime.Text = string.format(
+            "Sessão: %02d:%02d:%02d", h, m, s
+        )
+
+        task.wait(1)
+    end
+end)
+
 
 local subLbl = Instance.new("TextLabel")
 subLbl.Size = UDim2.new(0, 300, 0, 14)
