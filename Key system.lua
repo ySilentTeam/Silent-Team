@@ -1,5 +1,5 @@
 
-local MENU_URL = "https://raw.githubusercontent.com/ySilentTeam/silent-team/main/menu.lua"
+local MENU_URL = "https://raw.githubusercontent.com/ySilentTeam/Silent-Team/refs/heads/main/menu.lua.txt"
 
 -- 🔑 KEYS ATIVAS (revogue apagando a linha)
 local KEYS_VALIDAS = {
