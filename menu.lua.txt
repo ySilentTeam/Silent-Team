@@ -11,17 +11,18 @@ local LocalPlayer = Players.LocalPlayer
 local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 
 
--- SILENT TEAM | BLACK & WHITE NEON
-local TC = Color3.fromRGB(255, 255, 255)
-local TCD = Color3.fromRGB(175, 175, 175)
-local BG = Color3.fromRGB(7, 7, 7)
-local BG2 = Color3.fromRGB(15, 15, 15)
-local BG3 = Color3.fromRGB(24, 24, 24)
-local LINE = Color3.fromRGB(75, 75, 75)
-local DIM = Color3.fromRGB(165, 165, 165)
-local WH = Color3.fromRGB(255, 255, 255)
-local YEL = Color3.fromRGB(255, 255, 255)
-local STAFF_RED = Color3.fromRGB(255, 255, 255)
+-- SILENT TEAM | CYBER NEON THEME
+-- Paleta centralizada: preto azulado, ciano neon e violeta tecnológico.
+local TC = Color3.fromRGB(0, 210, 255)          -- ciano neon principal
+local TCD = Color3.fromRGB(92, 164, 190)        -- ciano secundário
+local BG = Color3.fromRGB(5, 9, 18)             -- fundo azul quase preto
+local BG2 = Color3.fromRGB(9, 17, 30)           -- painéis secundários
+local BG3 = Color3.fromRGB(14, 27, 44)          -- cartões e áreas internas
+local LINE = Color3.fromRGB(29, 77, 104)        -- divisórias frias
+local DIM = Color3.fromRGB(145, 169, 188)       -- texto secundário
+local WH = Color3.fromRGB(235, 246, 255)        -- texto principal
+local YEL = Color3.fromRGB(255, 190, 75)        -- avisos
+local STAFF_RED = Color3.fromRGB(255, 76, 94)   -- alertas de staff
 
 local C = (getgenv and getgenv()) or _G
 cloneref = cloneref or function(v) return v end
@@ -153,9 +154,7 @@ local function updateInstancePropertiesPosition(frame, handlePart, onEnd)
     end))
 end
 
--- ============================================
--- BYPASS ANTI-CHEAT
--- ============================================
+
 (function()
     local RS = game:GetService("ReplicatedStorage")
     local isEValid = function(k) return (getgenv and getgenv()[k]) or (_G and _G[k]) end
@@ -2429,13 +2428,12 @@ local TweenService = game:GetService("TweenService")
 
 task.spawn(function()
     while container.Parent do
+        -- Brilho suave ciano/azul/violeta; removido o arco-íris RGB agressivo.
         local cores = {
-            Color3.fromRGB(255, 0, 0),
-            Color3.fromRGB(255, 0, 255),
-            Color3.fromRGB(0, 0, 255),
-            Color3.fromRGB(0, 255, 255),
-            Color3.fromRGB(0, 255, 0),
-            Color3.fromRGB(255, 255, 0),
+            Color3.fromRGB(0, 210, 255),
+            Color3.fromRGB(35, 120, 255),
+            Color3.fromRGB(126, 85, 255),
+            Color3.fromRGB(35, 120, 255),
         }
 
         for _, cor in ipairs(cores) do
@@ -2443,7 +2441,7 @@ task.spawn(function()
 
             local tween = TweenService:Create(
                 cStroke,
-                TweenInfo.new(0.5, Enum.EasingStyle.Linear),
+                TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
                 {Color = cor}
             )
 
@@ -2461,7 +2459,7 @@ logoFundo.Size = UDim2.new(1, 0, 1, 0)
 logoFundo.Position = UDim2.new(0, 0, 0, 0)
 logoFundo.BackgroundTransparency = 1
 logoFundo.Image = "rbxassetid://80593575481265"
-logoFundo.ImageTransparency = 0.75
+logoFundo.ImageTransparency = 0.68
 logoFundo.ScaleType = Enum.ScaleType.Fit
 logoFundo.Visible = true
 logoFundo.ZIndex = 1
@@ -2493,12 +2491,31 @@ topBar.BackgroundColor3 = BG3
 topBar.BorderSizePixel = 0
 topBar.Parent = container
 local topCorner = Instance.new("UICorner"); topCorner.CornerRadius = UDim.new(0,14); topCorner.Parent = topBar
+
+-- Faixa superior em prata cromado: reflexo metálico animado e discreto.
+local silverSequence = ColorSequence.new({
+    ColorSequenceKeypoint.new(0.00, Color3.fromRGB(54, 59, 69)),
+    ColorSequenceKeypoint.new(0.22, Color3.fromRGB(166, 174, 187)),
+    ColorSequenceKeypoint.new(0.38, Color3.fromRGB(245, 248, 255)),
+    ColorSequenceKeypoint.new(0.50, Color3.fromRGB(112, 121, 137)),
+    ColorSequenceKeypoint.new(0.68, Color3.fromRGB(226, 232, 241)),
+    ColorSequenceKeypoint.new(1.00, Color3.fromRGB(48, 53, 63)),
+})
+local topSilver = Instance.new("UIGradient")
+topSilver.Name = "SilverChromeGradient"
+topSilver.Color = silverSequence
+topSilver.Rotation = 0
+topSilver.Parent = topBar
+
 local topLine = Instance.new("Frame")
-topLine.Size = UDim2.new(1, 0, 0, 1)
-topLine.Position = UDim2.new(0, 0, 1, -1)
-topLine.BackgroundColor3 = TC
+topLine.Size = UDim2.new(1, 0, 0, 2)
+topLine.Position = UDim2.new(0, 0, 1, -2)
+topLine.BackgroundColor3 = Color3.fromRGB(190, 198, 210)
 topLine.BorderSizePixel = 0
 topLine.Parent = topBar
+local topLineGradient = Instance.new("UIGradient")
+topLineGradient.Color = silverSequence
+topLineGradient.Parent = topLine
 
 
 
@@ -2520,10 +2537,38 @@ titleLbl.Position = UDim2.new(0, 0, 0, isMobile and 8 or 6)
 titleLbl.BackgroundTransparency = 1
 titleLbl.Text = "SILENT TEAM | PAINEL"
 titleLbl.TextColor3 = WH
-titleLbl.Font = Enum.Font.GothamBlack
-titleLbl.TextSize = isMobile and 16 or 20
+titleLbl.Font = Enum.Font.GothamBlack -- estilo pesado inspirado no visual de GTA San Andreas
+titleLbl.TextSize = isMobile and 17 or 21
+titleLbl.TextStrokeColor3 = Color3.fromRGB(15, 15, 15)
+titleLbl.TextStrokeTransparency = 0.18
 titleLbl.TextXAlignment = Enum.TextXAlignment.Center
 titleLbl.Parent = topBar
+
+-- EFEITO VISUAL: brilho cromado passando pelo título
+local titleChrome = Instance.new("UIGradient")
+titleChrome.Name = "TitleChromeShimmer"
+titleChrome.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(125, 136, 153)),
+    ColorSequenceKeypoint.new(0.32, Color3.fromRGB(225, 233, 244)),
+    ColorSequenceKeypoint.new(0.48, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(0.62, Color3.fromRGB(183, 194, 210)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 132, 150)),
+})
+titleChrome.Offset = Vector2.new(-1, 0)
+titleChrome.Parent = titleLbl
+
+task.spawn(function()
+    while titleLbl.Parent do
+        local shine = TweenService:Create(titleChrome,
+            TweenInfo.new(2.4, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+            {Offset = Vector2.new(1, 0)})
+        shine:Play()
+        shine.Completed:Wait()
+        if not titleLbl.Parent then break end
+        titleChrome.Offset = Vector2.new(-1, 0)
+        task.wait(0.25)
+    end
+end)
 
 -- Cartão do jogador no cabeçalho
 local Players = game:GetService("Players")
@@ -2532,20 +2577,38 @@ local sessionStart = os.clock()
 
 local profile = Instance.new("Frame")
 profile.Name = "PlayerProfile"
-profile.Size = UDim2.new(0, 180, 0, 38)
-profile.Position = UDim2.new(0, 8, 0, 3)
-profile.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+profile.Size = UDim2.new(0, isMobile and 250 or 290, 0, isMobile and 44 or 46)
+profile.Position = UDim2.new(0, 8, 1, isMobile and -50 or -54)
+profile.BackgroundTransparency = 1 -- transparente: nao cobre o titulo
 profile.BorderSizePixel = 0
-profile.Parent = topBar
+profile.ClipsDescendants = true
+profile.Parent = container
 
 local profileCorner = Instance.new("UICorner")
-profileCorner.CornerRadius = UDim.new(0, 9)
+profileCorner.CornerRadius = UDim.new(1, 0)
 profileCorner.Parent = profile
+local profileSilver = Instance.new("UIGradient")
+profileSilver.Name = "ProfileSilverGradient"
+profileSilver.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(35, 38, 45)),
+    ColorSequenceKeypoint.new(0.45, Color3.fromRGB(83, 90, 103)),
+    ColorSequenceKeypoint.new(0.52, Color3.fromRGB(126, 133, 145)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(28, 30, 36)),
+})
+profileSilver.Rotation = 0
+profileSilver.Parent = profile
+profileSilver.Enabled = false -- sem fundo metalico atras do nome/tempo
+local profileStroke = Instance.new("UIStroke")
+profileStroke.Name = "SilverBorder"
+profileStroke.Color = Color3.fromRGB(190, 198, 210)
+profileStroke.Thickness = 0
+profileStroke.Transparency = 1
+profileStroke.Parent = profile
 
 local avatar = Instance.new("ImageLabel")
 avatar.Name = "Avatar"
-avatar.Size = UDim2.new(0, 30, 0, 30)
-avatar.Position = UDim2.new(0, 5, 0.5, -15)
+avatar.Size = UDim2.new(0, 32, 0, 32)
+avatar.Position = UDim2.new(0, 7, 0.5, -16)
 avatar.BackgroundTransparency = 1
 avatar.Image = ""
 avatar.Parent = profile
@@ -2570,28 +2633,70 @@ end)
 
 local playerName = Instance.new("TextLabel")
 playerName.Name = "PlayerName"
-playerName.Size = UDim2.new(1, -45, 0, 17)
-playerName.Position = UDim2.new(0, 42, 0, 3)
+playerName.Size = UDim2.new(1, -54, 0, 18)
+playerName.Position = UDim2.new(0, 46, 0, 4)
 playerName.BackgroundTransparency = 1
 playerName.Text = player.DisplayName
-playerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+playerName.TextColor3 = Color3.fromRGB(235, 239, 247)
 playerName.Font = Enum.Font.GothamBold
-playerName.TextSize = 12
+playerName.TextSize = isMobile and 11 or 12
 playerName.TextTruncate = Enum.TextTruncate.AtEnd
 playerName.TextXAlignment = Enum.TextXAlignment.Left
 playerName.Parent = profile
+local nameSilver = Instance.new("UIGradient")
+nameSilver.Name = "NameChromeGradient"
+nameSilver.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(113, 121, 135)),
+    ColorSequenceKeypoint.new(0.28, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(0.48, Color3.fromRGB(173, 183, 198)),
+    ColorSequenceKeypoint.new(0.62, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 129, 145)),
+})
+nameSilver.Parent = playerName
 
 local playTime = Instance.new("TextLabel")
 playTime.Name = "PlayTime"
-playTime.Size = UDim2.new(1, -45, 0, 14)
-playTime.Position = UDim2.new(0, 42, 0, 20)
+playTime.Size = UDim2.new(1, -54, 0, 17)
+playTime.Position = UDim2.new(0, 46, 0, 23)
 playTime.BackgroundTransparency = 1
-playTime.Text = "TEMPO DE JOGO: 00:00:00"
-playTime.TextColor3 = Color3.fromRGB(255, 255, 255)
+playTime.Text = "◷ 00:00:00  •  TEMPO DE JOGO"
+playTime.TextColor3 = Color3.fromRGB(220, 226, 236)
 playTime.Font = Enum.Font.GothamBold
-playTime.TextSize = 12
+playTime.TextSize = isMobile and 10 or 11
 playTime.TextXAlignment = Enum.TextXAlignment.Left
 playTime.Parent = profile
+local timeSilver = Instance.new("UIGradient")
+timeSilver.Name = "PlayTimeChromeGradient"
+timeSilver.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(123, 132, 147)),
+    ColorSequenceKeypoint.new(0.3, Color3.fromRGB(248, 250, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(181, 190, 204)),
+    ColorSequenceKeypoint.new(0.7, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(125, 134, 149)),
+})
+timeSilver.Parent = playTime
+
+-- Um reflexo passa pelo cabeçalho inteiro, pelo cartão e pelos dois textos.
+task.spawn(function()
+    while topBar.Parent do
+        local info = TweenInfo.new(2.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+        local jobs = {
+            TweenService:Create(topSilver, info, {Offset = Vector2.new(1, 0)}),
+            TweenService:Create(profileSilver, info, {Offset = Vector2.new(1, 0)}),
+            TweenService:Create(nameSilver, info, {Offset = Vector2.new(1, 0)}),
+            TweenService:Create(timeSilver, info, {Offset = Vector2.new(1, 0)}),
+            TweenService:Create(topLineGradient, info, {Offset = Vector2.new(1, 0)}),
+        }
+        for _, tween in ipairs(jobs) do tween:Play() end
+        jobs[1].Completed:Wait()
+        if not topBar.Parent then break end
+        topSilver.Offset = Vector2.new(-1, 0)
+        profileSilver.Offset = Vector2.new(-1, 0)
+        nameSilver.Offset = Vector2.new(-1, 0)
+        timeSilver.Offset = Vector2.new(-1, 0)
+        topLineGradient.Offset = Vector2.new(-1, 0)
+    end
+end)
 
 task.spawn(function()
     while profile.Parent do
@@ -2601,7 +2706,7 @@ task.spawn(function()
         local s = elapsed % 60
 
         playTime.Text = string.format(
-            "TEMPO DE JOGO: %02d:%02d:%02d", h, m, s
+            "◷ %02d:%02d:%02d  •  TEMPO DE JOGO", h, m, s
         )
 
         task.wait(1)
@@ -2631,44 +2736,100 @@ local TAB_NAMES = {"PLAYER","ESP","AIMBOT","MISC","CONFIG"}
 local activeTab = "PLAYER"
 local tabButtons, tabStrokes = {}, {}
 
+-- Navegação lateral: abas empilhadas à esquerda, mantendo a arte de fundo Silent Team.
+local PY = isMobile and 82 or 64
+local sideW = isMobile and 88 or 100
+local gapX = 8
+local contentX = 8 + sideW + gapX
+local leftW = isMobile and 145 or 240
+local rightX = contentX + leftW + gapX
+local rightW = math.max(120, W - rightX - 8)
+
 local tabBar = Instance.new("ScrollingFrame")
-tabBar.Size = UDim2.new(1, -16, 0, isMobile and 44 or 36)
-tabBar.Position = UDim2.new(0, 8, 0, isMobile and 72 or 56)
-tabBar.BackgroundTransparency = 1
+tabBar.Name = "SideTabs"
+tabBar.Size = UDim2.new(0, sideW, 0, H-PY-(isMobile and 66 or 70))
+tabBar.Position = UDim2.new(0, 8, 0, PY)
+tabBar.BackgroundColor3 = BG2
+tabBar.BackgroundTransparency = 0.48
 tabBar.BorderSizePixel = 0
-tabBar.ScrollBarThickness = 0
+tabBar.ScrollBarThickness = 2
+tabBar.ScrollBarImageColor3 = TC
 tabBar.CanvasSize = UDim2.new(0,0,0,0)
-tabBar.AutomaticCanvasSize = Enum.AutomaticSize.X
-tabBar.ScrollingDirection = Enum.ScrollingDirection.X
+tabBar.AutomaticCanvasSize = Enum.AutomaticSize.Y
+tabBar.ScrollingDirection = Enum.ScrollingDirection.Y
 tabBar.Parent = container
+local sideCorner = Instance.new("UICorner"); sideCorner.CornerRadius = UDim.new(0,10); sideCorner.Parent = tabBar
+local sideStroke = Instance.new("UIStroke"); sideStroke.Color = LINE; sideStroke.Thickness = 1; sideStroke.Parent = tabBar
 
 local tabLayout = Instance.new("UIListLayout")
-tabLayout.FillDirection = Enum.FillDirection.Horizontal
-tabLayout.Padding = UDim.new(0, isMobile and 4 or 6)
+tabLayout.FillDirection = Enum.FillDirection.Vertical
+tabLayout.Padding = UDim.new(0, isMobile and 3 or 4)
 tabLayout.SortOrder = Enum.SortOrder.LayoutOrder
 tabLayout.Parent = tabBar
+local tabPadding = Instance.new("UIPadding")
+tabPadding.PaddingTop = UDim.new(0, 6)
+tabPadding.PaddingLeft = UDim.new(0, 5)
+tabPadding.PaddingRight = UDim.new(0, 5)
+tabPadding.Parent = tabBar
 
-for _, name in ipairs(TAB_NAMES) do
+local TAB_ICONS = {
+    PLAYER = "♟",
+    ESP = "◉",
+    AIMBOT = "◎",
+    MISC = "⚙",
+    CONFIG = "▤",
+}
+
+for index, name in ipairs(TAB_NAMES) do
     local tb = Instance.new("TextButton")
-    tb.Size = UDim2.new(0, isMobile and 88 or 96, 0, isMobile and 38 or 32)
+    tb.Name = "Tab_" .. name
+    tb.Size = UDim2.new(1, 0, 0, isMobile and 34 or 36)
     tb.BackgroundColor3 = BG3
-    tb.BackgroundTransparency = 0.25
-    tb.Text = name
+    tb.BackgroundTransparency = 0.42
+    tb.Text = (TAB_ICONS[name] or "•") .. "   " .. name
     tb.TextColor3 = DIM
-    tb.Font = Enum.Font.GothamSemibold
+    -- Tipografia futurista aplicada somente aos nomes das abas.
+    tb.Font = Enum.Font.SciFi
     tb.TextSize = isMobile and 10 or 11
+    tb.TextWrapped = false
+    tb.TextTruncate = Enum.TextTruncate.AtEnd
+    tb.TextXAlignment = Enum.TextXAlignment.Left
     tb.BorderSizePixel = 0
+    tb.LayoutOrder = index
     tb.Parent = tabBar
+    local innerPad = Instance.new("UIPadding")
+    innerPad.PaddingLeft = UDim.new(0, 8)
+    innerPad.PaddingRight = UDim.new(0, 4)
+    innerPad.Parent = tb
     local tbc = Instance.new("UICorner"); tbc.CornerRadius = UDim.new(0,8); tbc.Parent = tb
-    local ts = Instance.new("UIStroke"); ts.Color = LINE; ts.Thickness = 1; ts.Parent = tb
+    local ts = Instance.new("UIStroke"); ts.Color = LINE; ts.Thickness = 0.5; ts.Transparency = 0.35; ts.Parent = tb
     tabButtons[name] = tb
     tabStrokes[name] = ts
+
+    -- Microinteracao: realce suave ao passar o mouse, sem alterar o layout.
+    tb.MouseEnter:Connect(function()
+        if activeTab ~= name then
+            TweenService:Create(tb, TweenInfo.new(0.16, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+                BackgroundTransparency = 0.18,
+                TextColor3 = WH,
+            }):Play()
+            TweenService:Create(ts, TweenInfo.new(0.16), {Transparency = 0.08, Thickness = 1}):Play()
+        end
+    end)
+    tb.MouseLeave:Connect(function()
+        if activeTab ~= name then
+            TweenService:Create(tb, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+                BackgroundTransparency = 0.42,
+                TextColor3 = DIM,
+            }):Play()
+            TweenService:Create(ts, TweenInfo.new(0.2), {Transparency = 0.35, Thickness = 0.5}):Play()
+        end
+    end)
 end
 
-local PY = isMobile and 120 or 98
 local leftPanel = Instance.new("ScrollingFrame")
-leftPanel.Size = UDim2.new(0, isMobile and 210 or 300, 0, H-PY-10)
-leftPanel.Position = UDim2.new(0, 8, 0, PY)
+leftPanel.Size = UDim2.new(0, leftW, 0, H-PY-(isMobile and 66 or 70))
+leftPanel.Position = UDim2.new(0, contentX, 0, PY)
 leftPanel.BackgroundColor3 = BG2
 leftPanel.BackgroundTransparency = 0.50
 leftPanel.BorderSizePixel = 0
@@ -2682,8 +2843,8 @@ local lpCorner = Instance.new("UICorner"); lpCorner.CornerRadius = UDim.new(0,10
 local lpStr = Instance.new("UIStroke"); lpStr.Color = LINE; lpStr.Thickness = 1; lpStr.Parent = leftPanel
 
 local rightPanel = Instance.new("Frame")
-rightPanel.Size = UDim2.new(0, isMobile and 205 or 320, 0, H-PY-10)
-rightPanel.Position = UDim2.new(0, isMobile and 226 or 316, 0, PY)
+rightPanel.Size = UDim2.new(0, rightW, 0, H-PY-(isMobile and 66 or 70))
+rightPanel.Position = UDim2.new(0, rightX, 0, PY)
 rightPanel.BackgroundColor3 = BG2
 rightPanel.BackgroundTransparency = 0.50
 rightPanel.Visible = true
@@ -3291,8 +3452,16 @@ local function setActiveTab(name)
         TweenService:Create(tabStrokes[n], TweenInfo.new(0.15), {Color=LINE}):Play()
     end
     local btn = tabButtons[name]
-    TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3=TCD, TextColor3=WH}):Play()
-    TweenService:Create(tabStrokes[name], TweenInfo.new(0.15), {Color=TC}):Play()
+    TweenService:Create(btn, TweenInfo.new(0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+        BackgroundColor3=TCD, TextColor3=WH, BackgroundTransparency=0.05
+    }):Play()
+    TweenService:Create(tabStrokes[name], TweenInfo.new(0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+        Color=TC, Transparency=0, Thickness=1.25
+    }):Play()
+    -- Pequena animacao de destaque na aba ativa.
+    local originalSize = btn.Size
+    btn.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset - 2, originalSize.Y.Scale, originalSize.Y.Offset)
+    TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size=originalSize}):Play()
     updateContent()
 end
 
